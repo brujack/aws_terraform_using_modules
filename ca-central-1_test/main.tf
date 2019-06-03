@@ -2,14 +2,16 @@ provider "aws" {
   region     = "ca-central-1"
 }
 
-module "iam" {
-  source = "git@github.com:brujack/aws_terraform_modules.git//iam"
+# module "iam" {
+#   source = "git@github.com:brujack/aws_terraform_modules.git//iam"
 
-}
+# }
 
 module "remote_state" {
   source = "git@github.com:brujack/aws_terraform_modules.git//remote_state"
 
+  remote_state_full_access_users = ["bruce"]
+  remote_state_read_users = ["bruce-read"]
 }
 
 # Create the terraform.tfstate file in a unique path based of of the environment_name
