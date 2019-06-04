@@ -7,14 +7,14 @@ provider "aws" {
 
 # }
 
-module "remote_state" {
-  source = "git@github.com:brujack/aws_terraform_modules.git//remote_state"
+module "remote_state_users" {
+  source = "git@github.com:brujack/aws_terraform_modules.git//remote_state_users"
 
-  remote_state_full_access_users = ["bruce"]
+  remote_state_full_access_users = ["bruce", "bruce1"]
   remote_state_read_users = ["bruce-read"]
 }
 
-# Create the terraform.tfstate file in a unique path based of of the environment_name
+# Create the terraform.tfstate file in a unique path based off of the environment_name
 # This needs to be done in each environment.  The s3 bucket is setup in the infrastructure "environment" beforehand
 terraform {
   backend "s3" {
