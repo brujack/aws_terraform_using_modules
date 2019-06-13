@@ -35,3 +35,13 @@ module "vpc" {
 
   route53_private_zone_name = "conecrazy.aws"
 }
+
+module "ubuntu_toolbox_ec2" {
+  source = "git@github.com:brujack/aws_terraform_modules.git//ubuntu_toolbox_ec2"
+
+  environment_name = "bruce"
+
+  public_subnet_cidr_blocks = ["10.192.1.0/24"]
+  private_subnet_cidr_blocks = ["10.192.3.0/24"]
+  home_cidr_block = "192.16.1.0/24"
+}
